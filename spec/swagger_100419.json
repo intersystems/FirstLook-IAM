@@ -16,12 +16,6 @@
         "description" : "Returns all coffeemakers\n",
         "operationId" : "QueryAll",
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "bpl",
-          "in" : "query",
-          "required" : false,
-          "type" : "boolean"
-        } ],
         "responses" : {
           "200" : {
             "description" : "Success"
@@ -44,12 +38,7 @@
           "schema" : {
             "$ref" : "#/definitions/CoffeeMaker"
           }
-        }, {
-          "name" : "bpl",
-          "in" : "query",
-          "required" : false,
-          "type" : "boolean"
-        } ],
+        }],
         "responses" : {
           "200" : {
             "description" : "Success"
@@ -74,12 +63,7 @@
           "description" : "CoffeemakerID",
           "required" : true,
           "type" : "integer"
-        }, {
-          "name" : "bpl",
-          "in" : "query",
-          "required" : false,
-          "type" : "boolean"
-        } ],
+        }],
         "responses" : {
           "200" : {
             "description" : "Success"
@@ -110,12 +94,7 @@
           "schema" : {
             "$ref" : "#/definitions/CoffeeMaker"
           }
-        }, {
-          "name" : "bpl",
-          "in" : "query",
-          "required" : false,
-          "type" : "boolean"
-        } ],
+        }],
         "responses" : {
           "200" : {
             "description" : "Success"
@@ -141,12 +120,7 @@
           "description" : "CoffeemakerID",
           "required" : true,
           "type" : "integer"
-        }, {
-          "name" : "bpl",
-          "in" : "query",
-          "required" : false,
-          "type" : "boolean"
-        } ],
+        }],
         "responses" : {
           "200" : {
             "description" : "Success"

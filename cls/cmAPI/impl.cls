@@ -23,13 +23,13 @@ ClassMethod QueryAll() As %DynamicObject
 		//compose JSON from queried info
 		while rs.%Next() {
 			do tArr.%Push({
-				"img":    			(rs.%Get("Img")),
-				"coffeemakerID":    (rs.%Get("CoffeemakerID")),
-				"name": 			(rs.%Get("Name")),
-				"brand":        	(rs.%Get("Brand")),
-				"color":   			(rs.%Get("Color")),
-				"numcups":          (rs.%Get("NumCups")),
-				"price":        	(rs.%Get("Price"))
+				"Img":    			(rs.%Get("Img")),
+				"CoffeemakerID":    (rs.%Get("CoffeemakerID")),
+				"Name": 			(rs.%Get("Name")),
+				"Brand":        	(rs.%Get("Brand")),
+				"Color":   			(rs.%Get("Color")),
+				"NumCups":          (rs.%Get("NumCups")),
+				"Price":        	(rs.%Get("Price"))
 			})
 		}
 		

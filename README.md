@@ -6,7 +6,7 @@ tree/
 |LICENSE  
 |README.md  
 |cls/  
-|./demo/  
+|./cmAPI/  
 |../coffemaker.cls  
 |../impl.cls  
 |../spec.cls  

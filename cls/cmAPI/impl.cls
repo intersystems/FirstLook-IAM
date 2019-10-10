@@ -1,7 +1,7 @@
 /// An API for coffee sales using InterSystems IRIS<br/>
-/// Business logic class defined by OpenAPI in demo.spec<br/>
+/// Business logic class defined by OpenAPI in cmAPI.spec<br/>
 /// Updated Oct 4, 2019 14:39:26
-Class demo.impl Extends (%REST.Impl) [ ProcedureBlock ]
+Class cmAPI.impl Extends (%REST.Impl) [ ProcedureBlock ]
 {
 
 /// If ExposeServerExceptions is true, then details of internal errors will be exposed.
@@ -17,8 +17,8 @@ ClassMethod QueryAll() As %DynamicObject
 		
 		set tArr = []
 		
-		//query demo.coffeemaker for all coffeemakers.
-		set rs = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM demo.coffeemaker")
+		//query cmAPI.coffeemaker for all coffeemakers.
+		set rs = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM cmAPI.coffeemaker")
 		
 		//compose JSON from queried info
 		while rs.%Next() {
@@ -48,7 +48,7 @@ ClassMethod NewMaker(body As %Stream.Object) As %DynamicObject
 {
 	try {
 		//create new coffeemaker object
-		set cm = ##class(demo.coffeemaker).%New()
+		set cm = ##class(cmAPI.coffeemaker).%New()
 
 		//fill new coffeemaker with data from message body
 		do cm.%JSONImport(body)
@@ -72,13 +72,13 @@ ClassMethod NewMaker(body As %Stream.Object) As %DynamicObject
 ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 {
 	try {
-		if '##class(demo.coffeemaker).%ExistsId(id){
+		if '##class(cmAPI.coffeemaker).%ExistsId(id){
 			do ..%SetStatusCode("400")
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
 		//open coffeemaker with given ID
-		set cm = ##class(demo.coffeemaker).%OpenId(id)
+		set cm = ##class(cmAPI.coffeemaker).%OpenId(id)
 		
 		do cm.%JSONExportToString(.cmOut)
 
@@ -99,13 +99,13 @@ ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 {
 	try {
-		if '##class(demo.coffeemaker).%ExistsId(id){
+		if '##class(cmAPI.coffeemaker).%ExistsId(id){
 			do ..%SetStatusCode("400")
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
 		//open coffeemaker with given ID
-		set cm = ##class(demo.coffeemaker).%OpenId(id)
+		set cm = ##class(cmAPI.coffeemaker).%OpenId(id)
 
  		//refill opened coffeemaker with data from message body
 		do cm.%JSONImport(body)
@@ -130,13 +130,13 @@ ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 ClassMethod RemoveMaker(id As %Integer) As %DynamicObject
 {
 	try {
-		if '##class(demo.coffeemaker).%ExistsId(id){
+		if '##class(cmAPI.coffeemaker).%ExistsId(id){
 			do ..%SetStatusCode("400")
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
 		//delete coffeemaker
-		set sc = ##class(demo.coffeemaker).%DeleteId(id)
+		set sc = ##class(cmAPI.coffeemaker).%DeleteId(id)
 		
 		//do ..%SetStatusCode("200")
 		return id

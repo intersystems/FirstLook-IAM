@@ -1,4 +1,4 @@
-Class demo.spec Extends %REST.Spec [ ProcedureBlock ]
+Class cmAPI.spec Extends %REST.Spec [ ProcedureBlock ]
 {
 
 XData OpenAPI [ MimeType = application/json ]

@@ -1,4 +1,4 @@
-Class demo.coffeemaker Extends (%Persistent, %Populate, %XML.Adaptor, %JSON.Adaptor)
+Class cmAPI.coffeemaker Extends (%Persistent, %Populate, %XML.Adaptor, %JSON.Adaptor)
 {
 
 Property CoffeemakerID As %Integer [ Calculated, SqlComputeCode = {Set {*} = {ID} }, SqlComputed ];

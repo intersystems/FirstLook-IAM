@@ -132,6 +132,10 @@
       }
     }
   },
+  
+  "host" : "yourServer",
+  "basePath" : "/rest/coffeemakerapp",
+  
   "definitions" : {
     "CoffeeMaker" : {
       "type" : "object",

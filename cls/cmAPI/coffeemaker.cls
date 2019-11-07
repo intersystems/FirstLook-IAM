@@ -1,3 +1,5 @@
+///Class for coffeemaker objects, each with a unique CoffeemakerID
+
 Class cmAPI.coffeemaker Extends (%Persistent, %Populate, %XML.Adaptor, %JSON.Adaptor)
 {
 

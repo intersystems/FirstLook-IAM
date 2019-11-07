@@ -8,19 +8,18 @@ Class cmAPI.impl Extends (%REST.Impl) [ ProcedureBlock ]
 Parameter ExposeServerExceptions = 0;
 
 /// Returns all coffeemakers<br/>
-/// The method arguments hold values for:<br/>
-/// WARNING: This method's signature has changed.
+/// The method arguments hold values for:<br/>\
 ClassMethod QueryAll() As %DynamicObject
 {
-	//Using a try/except clause to catch server errors and write custom error message
+	// Using a try/except clause to catch server errors and write custom error message
 	try {
 		
 		set tArr = []
 		
-		//query cmAPI.coffeemaker for all coffeemakers.
+		// Query cmAPI.coffeemaker for all coffeemakers.
 		set rs = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM cmAPI.coffeemaker")
 		
-		//compose JSON from queried info
+		// Compose JSON from queried info
 		while rs.%Next() {
 			do tArr.%Push({
 				"img":    			(rs.%Get("Img")),
@@ -47,10 +46,10 @@ ClassMethod QueryAll() As %DynamicObject
 ClassMethod NewMaker(body As %Stream.Object) As %DynamicObject
 {
 	try {
-		//create new coffeemaker object
+		// Create new coffeemaker object
 		set cm = ##class(cmAPI.coffeemaker).%New()
 
-		//fill new coffeemaker with data from message body
+		// Fill new coffeemaker with data from message body
 		do cm.%JSONImport(body)
 
 		do cm.%Save()
@@ -68,7 +67,6 @@ ClassMethod NewMaker(body As %Stream.Object) As %DynamicObject
 /// Retrieve existing coffeemaker given ID and data. Returns coffeemaker<br/>
 /// The method arguments hold values for:<br/>
 ///     id, CoffeemakerID<br/>
-/// WARNING: This method's signature has changed.
 ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 {
 	try {
@@ -77,7 +75,7 @@ ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
-		//open coffeemaker with given ID
+		// Open coffeemaker with given ID
 		set cm = ##class(cmAPI.coffeemaker).%OpenId(id)
 		
 		do cm.%JSONExportToString(.cmOut)
@@ -85,7 +83,7 @@ ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 		return cmOut
 		
 	} catch(ex) {
-		//set error to 500 for categorical server errors
+		// Set error to 500 for categorical server errors
 		do ..%SetStatusCode("500")
 		return {"errormessage": "Server error"}
 	}
@@ -95,7 +93,6 @@ ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 /// The method arguments hold values for:<br/>
 ///     id, CoffeemakerID<br/>
 ///     body, coffeemaker info<br/>
-/// WARNING: This method's signature has changed.
 ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 {
 	try {
@@ -104,10 +101,10 @@ ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
-		//open coffeemaker with given ID
+		// Open coffeemaker with given ID
 		set cm = ##class(cmAPI.coffeemaker).%OpenId(id)
 
- 		//refill opened coffeemaker with data from message body
+ 		// Refill opened coffeemaker with data from message body
 		do cm.%JSONImport(body)
 	
 		do cm.%Save()
@@ -126,7 +123,6 @@ ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 /// Delete existing cofffeemaker given ID. Returns deleted coffeemaker<br/>
 /// The method arguments hold values for:<br/>
 ///     id, CoffeemakerID<br/>
-/// WARNING: This method's signature has changed.
 ClassMethod RemoveMaker(id As %Integer) As %DynamicObject
 {
 	try {
@@ -135,14 +131,12 @@ ClassMethod RemoveMaker(id As %Integer) As %DynamicObject
 			return {"errormessage": "No coffeemaker with given ID"}
 		}
 		
-		//delete coffeemaker
+		// Delete coffeemaker
 		set sc = ##class(cmAPI.coffeemaker).%DeleteId(id)
 		
-		//do ..%SetStatusCode("200")
 		return id
 
 	} catch (ex) {
-		//do ..%SetStatusCode("500")
 		set error = {"errormessage": "Server error"}
 		return error
 	}

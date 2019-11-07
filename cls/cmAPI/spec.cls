@@ -1,3 +1,6 @@
+/// An API for coffee sales using InterSystems IRIS
+///API specifications detailing routes and route functionality.
+
 Class cmAPI.spec Extends %REST.Spec [ ProcedureBlock ]
 {
 

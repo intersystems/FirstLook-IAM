@@ -140,22 +140,22 @@
     "CoffeeMaker" : {
       "type" : "object",
       "properties" : {
-        "Name" : {
+        "ProductName" : {
           "type" : "string"
         },
-        "Brand" : {
+        "ProductBrand" : {
           "type" : "string"
         },
-        "Price" : {
+        "ProductPrice" : {
           "type" : "numeric"
         },
-        "NumCups" : {
+        "NumberOfCups" : {
           "type" : "integer"
         },
-        "Color" : {
+        "ProductColor" : {
           "type" : "string"
         },
-        "Img" : {
+        "ImageFileName" : {
           "type" : "string"
         }
       }

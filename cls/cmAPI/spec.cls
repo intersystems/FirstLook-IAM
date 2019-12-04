@@ -165,22 +165,22 @@ XData OpenAPI [ MimeType = application/json ]
     "CoffeeMaker":{
       "type":"object",
       "properties":{
-        "name":{
+        "ProductName":{
           "type":"string"
         },
-        "brand":{
+        "ProductBrand":{
           "type":"string"
         },
-        "price":{
+        "ProductPrice":{
           "type":"string"
         },
-        "numcups":{
+        "NumberOfCups":{
           "type":"string"
         },
-        "color":{
+        "ProductColor":{
           "type":"string"
         },
-        "img":{
+        "ImageFileName":{
           "type":"string"
         }
       }

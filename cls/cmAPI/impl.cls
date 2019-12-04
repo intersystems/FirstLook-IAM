@@ -22,13 +22,12 @@ ClassMethod QueryAll() As %DynamicObject
 		// Compose JSON from queried info
 		while rs.%Next() {
 			do tArr.%Push({
-				"Img":    			(rs.%Get("Img")),
-				"CoffeemakerID":    (rs.%Get("CoffeemakerID")),
-				"Name": 			(rs.%Get("Name")),
-				"Brand":        	(rs.%Get("Brand")),
-				"Color":   			(rs.%Get("Color")),
-				"NumCups":          (rs.%Get("NumCups")),
-				"Price":        	(rs.%Get("Price"))
+				"ImageFileName":    	(rs.%Get("ImageFileName")),
+				"ProductName": 			(rs.%Get("ProductName")),
+				"ProductBrand":        	(rs.%Get("ProductBrand")),
+				"ProductColor":   		(rs.%Get("ProductColor")),
+				"NumberOfCups":         (rs.%Get("NumberOfCups")),
+				"ProductPrice":        	(rs.%Get("ProductPrice"))
 			})
 		}
 		
@@ -66,7 +65,7 @@ ClassMethod NewMaker(body As %Stream.Object) As %DynamicObject
 
 /// Retrieve existing coffeemaker given ID and data. Returns coffeemaker<br/>
 /// The method arguments hold values for:<br/>
-///     id, CoffeemakerID<br/>
+///     id, Coffeemaker ID<br/>
 ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 {
 	try {
@@ -91,7 +90,7 @@ ClassMethod QueryMaker(id As %Integer) As %DynamicObject
 
 /// Update existing coffeemaker coffeemaker given ID and data. Returns updated coffeemaker<br/>
 /// The method arguments hold values for:<br/>
-///     id, CoffeemakerID<br/>
+///     id, Coffeemaker ID<br/>
 ///     body, coffeemaker info<br/>
 ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 {
@@ -122,7 +121,7 @@ ClassMethod EditMaker(id As %Integer, body As %Stream.Object) As %DynamicObject
 
 /// Delete existing cofffeemaker given ID. Returns deleted coffeemaker<br/>
 /// The method arguments hold values for:<br/>
-///     id, CoffeemakerID<br/>
+///     id, Coffeemaker ID<br/>
 ClassMethod RemoveMaker(id As %Integer) As %DynamicObject
 {
 	try {

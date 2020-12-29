@@ -1,6 +1,7 @@
 # FirstLook-IAM 
 
-This repository is intended for use with the InterSytems First Look for the API Manager.
+This repository is intended for use with the InterSytems First Look for the API Manager.  
+
 Explanation and instructions can be found here: https://docs.intersystems.com/irislatest/csp/docbook/Doc.View.cls?KEY=AFL_iam
 
 tree/  
